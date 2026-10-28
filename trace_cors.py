@@ -75,7 +75,13 @@ async def main():
    for f in page.frames:
     try: out["observed"]["frame_titles"].append((await f.title())[:70])
     except:pass
-   out["observed"]["wallet_error"]=any("Connection lost to wallet" in (await f.locator("body").inner_text(timeout=1000)) for f in page.frames if await f.locator("body").count())
+   wallet_error=False
+   for f in page.frames:
+    try:
+     if await f.locator("body").count() and "Connection lost to wallet" in (await f.locator("body").inner_text(timeout=1000)):
+      wallet_error=True
+    except Exception:pass
+   out["observed"]["wallet_error"]=wallet_error
   except Exception as e:out["observed"]["error"]=str(e)[:250]
   finally:
    await context.close();await browser.close()
