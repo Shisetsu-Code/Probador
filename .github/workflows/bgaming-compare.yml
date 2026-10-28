@@ -1,0 +1,46 @@
+name: Contrastar catalogos BGaming
+on:
+  push:
+    branches: [main]
+    paths: ['tools/compare_bgaming.py', '.github/workflows/bgaming-compare.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Browser setup
+        run: |
+          python -m pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+      - name: Compare BGaming catalogs
+        run: |
+          python -m py_compile tools/compare_bgaming.py
+          python tools/compare_bgaming.py
+      - name: Commit comparison files
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -f results/bgaming/comparison.json ]; then
+            git add results/bgaming/comparison.json results/bgaming/comparison.csv results/bgaming/diagnostics.json
+            if ! git diff --cached --quiet; then
+              git commit -m 'Record BGaming catalog comparison'
+              git pull --rebase origin main
+              git push origin HEAD:main
+            fi
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bgaming-catalog-comparison
+          path: results/bgaming/
+          if-no-files-found: warn
