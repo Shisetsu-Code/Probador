@@ -47,6 +47,18 @@ Desde GitHub Actions, las solicitudes HTTP `OPTIONS` (preflight de `POST`) a:
 
 respondieron **204** con cabeceras CORS. **No obstante**, el navegador reportó fallo de CORS o autorización durante la carga real. Una solicitud `OPTIONS` sintética exitosa no demuestra que se acepten los encabezados o la sesión de un lanzamiento real; la causa exacta sigue sin confirmarse.
 
+## Comprobación adicional de static-live (ejecución completa)
+
+La ejecución [40777628373](https://github.com/Shisetsu-Code/Probador/actions/runs/40777628373) terminó correctamente.
+
+- **11 IDs sometidos a comprobación:** 10 clientes reales y un control negativo.
+- **10 clientes reales:** HTTP 200 en `static-live`, título correcto, motor cargado.
+- **10/10:** mensaje `Connection lost to wallet`; ninguna demo jugable verificada en GitHub Actions.
+- Los resultados están en [results/direct_missing_id_checks.json](results/direct_missing_id_checks.json).
+- El inventario compacto está en [results/clientes_identificados.csv](results/clientes_identificados.csv).
+
+Nuevas rutas detectadas: `/2577/1.21.1/index.html`, `/2580/1.21.1/index.html`, `/2544/1.6.0/index.html`. El código HTTP corresponde a las solicitudes con parámetros demo de prueba, **no** certifica que la ruta sin parámetros inicie una sesión.
+
 ## Conclusión
 
 **Se ha conseguido acceso a los archivos del cliente y sus IDs/versiones. No se ha validado una demo jugable independiente.** Los enlaces de cliente no sustituyen un lanzamiento demo válido del proveedor. No se recomienda ocultar el fallo con un proxy CORS, inventar tokens ni utilizar credenciales de terceros.
