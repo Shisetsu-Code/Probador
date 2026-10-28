@@ -100,8 +100,8 @@ async def one(browser,item):
   all_text=" ".join((f.get("body") or "") for f in result["frame_details"])
   if "Connection lost to wallet" in all_text or "Connection lost to wallet" in result["body_excerpt"]:
    result["load_state"]="wallet_auth_failed"
-  elif any(f.get("canvas_count",0) for f in result["frame_details"]) and
-       any("hacksawgaming.com" in f.get("url","") for f in result["frame_details"]):
+  elif (any(f.get("canvas_count",0) for f in result["frame_details"]) and
+       any("hacksawgaming.com" in f.get("url","") for f in result["frame_details"])):
    result["load_state"]="public_demo_canvas_loaded_check_manually"
   elif result["clicks"]:result["load_state"]="clicked_but_client_not_confirmed"
   else:result["load_state"]="public_demo_control_not_found"
