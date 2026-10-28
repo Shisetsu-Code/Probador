@@ -9,7 +9,19 @@ from pathlib import Path
 from urllib.parse import urlparse,urlencode
 from playwright.async_api import async_playwright
 OUT=Path("results");OUT.mkdir(exist_ok=True,parents=True)
-IDS={1126:"Mines (positive control)",1392:"Dark Summoning",2524:"Hellmageddon",2528:"Ghost Vision",999999:"Invalid (negative control)"}
+IDS={
+ 1392:"Dark Summoning (official control)",
+ 2521:"Hellmageddon (DGN launch)",
+ 2522:"Hellmageddon (variant)",
+ 2524:"Hellmageddon (variant)",
+ 2528:"Ghost Vision (DGN launch)",
+ 2530:"Ghost Vision (variant)",
+ 2532:"Ghost Vision (variant)",
+ 2577:"Buried by Night (DGN launch)",
+ 2580:"Buried by Night (variant)",
+ 2544:"Donny Dough OG",
+ 999999:"Invalid (negative control)"
+}
 STG="https://static-stg.hacksawgaming.com/launcher/static-launcher.html"
 LIVE="https://static-live.hacksawgaming.com"
 def stg_url(i):
