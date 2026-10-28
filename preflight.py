@@ -9,9 +9,9 @@ from urllib.request import Request,urlopen
 from urllib.error import HTTPError,URLError
 TARGETS=[
  ("official-demo-auth","https://rgs-demo.hacksawgaming.com/api/play/authenticate","https://static-live.hacksawgaming.com","POST"),
- ("official-demo-settings","https://rgs-demo.hacksawgaming.com/api/play/partnerSettings","https://static-live.hacksawgaming.com","GET"),
+ ("official-demo-settings","https://rgs-demo.hacksawgaming.com/api/play/partnerSettings","https://static-live.hacksawgaming.com","POST"),
  ("staging-demo-auth","https://rgs-hacksaw-fun-stg.hacksawgaming.com/api/play/authenticate","https://static-stg.hacksawgaming.com","POST"),
- ("staging-demo-settings","https://rgs-hacksaw-stg.hacksawgaming.com/api/play/partnerSettings","https://static-stg.hacksawgaming.com","GET")
+ ("staging-demo-settings","https://rgs-hacksaw-stg.hacksawgaming.com/api/play/partnerSettings","https://static-stg.hacksawgaming.com","POST")
 ]
 def probe(label,url,origin,method):
  headers={"Origin":origin,"Access-Control-Request-Method":method,
