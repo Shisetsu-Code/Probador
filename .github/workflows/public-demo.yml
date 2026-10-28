@@ -1,0 +1,27 @@
+name: Public demo browser diagnostics
+on:
+  push:
+    branches: [main]
+    paths: ['public_demo.py', '.github/workflows/public-demo.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: python -m py_compile public_demo.py
+      - run: python public_demo.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-demo-diagnostics
+          path: results/public_launch/
+          if-no-files-found: warn
