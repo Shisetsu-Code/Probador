@@ -1,0 +1,35 @@
+name: Export BGaming official slots
+on:
+  push:
+    branches: [main]
+    paths: ['tools/bg_official_extract.py', '.github/workflows/bg-official.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: python -m py_compile tools/bg_official_extract.py
+      - run: python tools/bg_official_extract.py
+      - name: Commit verified official source export
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/bgaming/official_slots.json
+          git diff --cached --quiet || git commit -m 'Export official BGaming slot cards'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bgaming-official-slots
+          path: results/bgaming/official_slots.json
+          if-no-files-found: warn
