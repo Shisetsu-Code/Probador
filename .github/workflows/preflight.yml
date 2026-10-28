@@ -1,0 +1,25 @@
+name: Read-only demo backend CORS diagnostics
+on:
+  push:
+    branches: [main]
+    paths: ['preflight.py', '.github/workflows/preflight.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cors:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - run: python -m py_compile preflight.py
+      - run: python preflight.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hacksaw-backend-cors
+          path: results/backend_preflight.json
+          if-no-files-found: warn
