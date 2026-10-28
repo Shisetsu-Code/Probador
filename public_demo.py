@@ -13,6 +13,7 @@ OUT=Path("results/public_launch")
 OUT.mkdir(parents=True,exist_ok=True)
 TARGETS=[
  {"name":"Dark Summoning", "source":"official-control", "url":"https://www.hacksawgaming.com/games/dark-summoning"},
+ {"name":"Le Bandit", "source":"official-control", "url":"https://www.hacksawgaming.com/games/le-bandit"},
  {"name":"Hellmageddon", "source":"dgn-public-demo", "url":"https://dgnzone.com/demos/hellmageddon"},
  {"name":"Ghost Vision", "source":"dgn-public-demo", "url":"https://dgnzone.com/demos/ghost-vision"},
  {"name":"Buried by Night", "source":"dgn-public-demo", "url":"https://dgnzone.com/demos/buried-by-night"}
@@ -75,7 +76,16 @@ async def one(browser,item):
       break
     if done:break
    except Exception as e: result["clicks"].append("click-error: "+clean_log(e))
-  await page.wait_for_timeout(10000)
+  # Some official site age-verification dialogs appear only after clicking Try it.
+  for label in ("Yes, I am over 18","Yes, I'm over 18","I am over 18"):
+   try:
+    loc=page.get_by_text(label,exact=True)
+    if await loc.count() and await loc.first.is_visible():
+     await loc.first.click(timeout=1500)
+     result["clicks"].append("post-launch age: "+label)
+     break
+   except Exception:pass
+  await page.wait_for_timeout(12000)
   result["final_page_url"]=clean_url(page.url)
   result["final_title"]=(await page.title())[:140]
   result["frames_after"]=[clean_url(f.url) for f in page.frames]
