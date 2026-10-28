@@ -1,0 +1,27 @@
+name: Official Hacksaw demo launch control
+on:
+  push:
+    branches: [main]
+    paths: ['official_control.py', '.github/workflows/official-control.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: python -m py_compile official_control.py
+      - run: python official_control.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-hacksaw-launch
+          path: results/official_control/
+          if-no-files-found: warn
