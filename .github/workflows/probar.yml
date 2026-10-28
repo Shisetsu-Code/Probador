@@ -1,0 +1,60 @@
+name: Probar IDs Hacksaw
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'probe.py'
+      - 'direct.py'
+      - 'ids.json'
+      - 'requirements.txt'
+      - '.github/workflows/probar.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hacksaw-probe
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Instalar Playwright y Chromium
+        run: |
+          python -m pip install --disable-pip-version-check -r requirements.txt
+          python -m playwright install --with-deps chromium
+      - name: Validar sintaxis
+        run: python -m py_compile probe.py direct.py
+      - name: Probar IDs en staging
+        run: python probe.py
+      - name: Verificar rutas directas de demos
+        if: always()
+        run: python direct.py
+      - name: Guardar resultados en el repositorio
+        if: always()
+        run: |
+          if [ ! -d results ]; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/*.json results/*.csv || true
+          if ! git diff --cached --quiet; then
+            git commit -m 'Report Hacksaw game ID and standalone demo tests'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Descargar evidencia de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hacksaw-probe-results
+          path: results/
+          if-no-files-found: warn
