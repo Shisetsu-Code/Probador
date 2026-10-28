@@ -1,0 +1,36 @@
+﻿id,expected_game,page_title,load_result,navigation_status,canvas_count,elapsed_s
+1392,control Dark Summoning,Dark Summoning,runtime_resources_loaded_not_gameplay_verified,200,1,9.2
+2524,faltante Hellmageddon,Hellmageddon,runtime_resources_loaded_not_gameplay_verified,200,1,9.2
+2528,faltante Ghost Vision,Ghost Vision,runtime_resources_loaded_not_gameplay_verified,200,1,9.2
+2532,posible alias Ghost Vision,Ghost Vision,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2458,Supreme Zeus,Supreme Zeus,runtime_resources_loaded_not_gameplay_verified,200,1,9.1
+2470,Le Hooligan,Le Hooligan,runtime_resources_loaded_not_gameplay_verified,200,1,9.1
+2504,Le Cowboy Jojobet,Le Cowboy Jojobet,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2508,Lucky Multifruit Crystal Dust,Lucky Multifruit: Crystal Dust,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2516,Dragon Sanctuary,Dragon Sanctuary,runtime_resources_loaded_not_gameplay_verified,200,2,9.2
+2520,Le Soccer,Le Soccer,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2536,Fist of Destruction Megamultiplier,Fist of Destruction Megamultiplier,runtime_resources_loaded_not_gameplay_verified,200,1,9.2
+2560,Space Fart Jump,SPACE FART JUMP,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2700,Decay,Decay,runtime_resources_loaded_not_gameplay_verified,200,1,8.9
+2500,control inválido,Hacksaw Gaming,version_rejected,200,0,9.0
+999999,control inválido,Hacksaw Gaming,version_rejected,200,0,9.2
+2480,candidato,Twenty-One,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2484,candidato,Corporation Wars,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2488,candidato,Max The Mathmagician,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2492,candidato,Arizona James and the Lost Relics,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2496,candidato,Arizona James and the Lost Relics,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2522,candidato,Hellmageddon,runtime_resources_loaded_not_gameplay_verified,200,1,8.9
+2526,candidato,Le Platin,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2530,candidato,Ghost Vision,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2534,candidato,Le Sortudo,runtime_resources_loaded_not_gameplay_verified,200,1,8.9
+2538,candidato,Fist of Destruction Megamultiplier,runtime_resources_loaded_not_gameplay_verified,200,1,8.9
+2542,candidato,[cc-boot:rejection] TypeError: Cannot read properties of undefined (reading 'publish'),runtime_resources_loaded_not_gameplay_verified,200,1,9.1
+2544,candidato,Donny Dough OG,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2548,candidato,Hacksaw Gaming,version_rejected,200,0,8.9
+2552,candidato,Casabet Rumble,runtime_resources_loaded_not_gameplay_verified,200,1,8.9
+2556,candidato,Richville Rumble,runtime_resources_loaded_not_gameplay_verified,200,1,9.0
+2564,candidato,Doctor Dust,runtime_resources_loaded_not_gameplay_verified,200,1,9.1
+2568,candidato,Wot's Cluck'in Down on the farm,runtime_resources_loaded_not_gameplay_verified,200,1,8.9
+2572,candidato,Hacksaw Gaming,version_rejected,200,0,9.0
+2576,candidato,Hacksaw Gaming,version_rejected,200,0,8.9
+2580,candidato,Buried by Night,runtime_resources_loaded_not_gameplay_verified,200,1,8.9
