@@ -1,0 +1,59 @@
+{
+  "compared_at_utc": "2026-10-29",
+  "original": 423,
+  "aliases": [
+    {
+      "alias": "3 Lucky Monkeys",
+      "official": "3 LUCKY MONKEYS HOLD & WIN",
+      "reason": "Mismo lanzamiento del 28/09/2026, RTP 96.98% y mecánica Hold & Win"
+    },
+    {
+      "alias": "Dragon Age",
+      "official": "DRAGON AGE HOLD & WIN",
+      "reason": "Misma mecánica, 5x3, tiradas gratis, Gold Respin y RTP 96.14%"
+    },
+    {
+      "alias": "Gold Rush With Johnny Cash",
+      "official": "GOLD RUSH - JOHNNY CASH",
+      "reason": "BGaming utiliza ambas denominaciones en la misma ficha"
+    },
+    {
+      "alias": "Joker Masks",
+      "official": "JOKER MASK",
+      "reason": "Variante plural; misma fecha anunciada 09/11/2026 y proveedor"
+    },
+    {
+      "alias": "Lucky Lady Gun",
+      "official": "LADY LUCKY GUN",
+      "reason": "Inversión de palabras; misma fecha de lanzamiento 16/07/2025 y RTP 96.13%"
+    },
+    {
+      "alias": "Luxury Feast",
+      "official": "LUXURY FEAST HOLD AND WIN",
+      "reason": "Misma fecha anunciada 16/11/2026, RTP 97%, bonus y parámetros"
+    },
+    {
+      "alias": "Royal Beellion",
+      "official": "ROYAL BEELLION HOLD & WIN",
+      "reason": "Misma fecha 28/04/2026, 97% RTP y juego de abejas Hold & Win"
+    },
+    {
+      "alias": "Scroll of Adventure",
+      "official": "SCROLL OF ADVENTURE NEW",
+      "reason": "BGaming usa New como etiqueta en su ficha /games/scroll-of-adventure"
+    },
+    {
+      "alias": "Shark & Spark",
+      "official": "SHARK & SPARK HOLD & WIN",
+      "reason": "Misma fecha 28/05/2026, RTP 97%, Pays Anywhere y bonus"
+    },
+    {
+      "alias": "St. Patrick's Pots",
+      "official": "ST. PATRICK'S POTS HOLD AND WIN",
+      "reason": "Versión abreviada del título oficial, lanzamiento 11/08/2026"
+    }
+  ],
+  "corrected_count": 413,
+  "principal": 243,
+  "additional": 170
+}
